@@ -1,0 +1,73 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h2>Split Reverse String</h2>
+
+<form method="post" asp-page-handler="Reversal">
+    <div>
+        <label for="InputString">Enter a string:</label>
+        <input type="text" id="InputString" name="InputString" asp-for="InputString" />
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+@if (Model.ProcessedString != null)
+{
+    <h3>Processed Output:</h3>
+    <p>@Model.ProcessedString</p>
+}
+
+<br />
+
+<h2>Is Valid Anagram</h2>
+
+<form method="post" asp-page-handler="ValidAnagram">
+    <div>
+        <label for="FistString">Enter first string:</label>
+        <input type="text" id="FirstString" name="FirstString" asp-for="FirstString" />
+    </div>
+    <div>
+        <label for="FistString">Enter second string:</label>
+        <input type="text" id="SecondString" name="SecondString" asp-for="SecondString" />
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+@if (Model.IsItValid != null)
+{
+    <h3>ValidAnagram:</h3>
+    <p>@Model.IsItValid</p>
+}
+
+<br />
+
+<h2>Transaction</h2>
+
+<form method="post" asp-page-handler="Transaction">
+    <div>
+        <label asp-for="SelectedValue">Select an Item:</label>
+        <select asp-for="SelectedValue" asp-items="Model.DropdownItems">
+            <option value="">Select an option</option>
+        </select>
+    </div>
+    <div>
+        <label for="Reward">Enter reward:</label>
+        <input type="number" id="Reward" name="Reward" asp-for="Reward" />
+    </div>
+    <div>
+        <label for="Total">Enter total:</label>
+        <input type="number" id="Total" name="Total" asp-for="Total" />
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+@if (Model.CalculationResult != null)
+{
+    <h3>Grand Total:</h3>
+    <p>@Model.CalculationResult</p>
+    <h3>Transaction ID:</h3>
+    <p>@Model.TransactionID</p>
+}
